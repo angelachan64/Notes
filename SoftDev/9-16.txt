@@ -1,0 +1,22 @@
+cat allemails responses | sort | uniq -c | sort -n | grep "1 " | sed "s/,*1 //g" | xclip -sel clip
+cat - opens documents(s)
+    - opens allemails & responses
+sort - sort in order alphabetically
+uniq -c - compresses & shows how many times each item showed up
+sort -n - sort numberically
+grep "1 " - takes only items that appear once because it grabs items with
+     	    1 and a space
+xclip -sel clip - copies to clipboard
+
+find . -iname \*jpg - find all files that end in .jpg
+find . -iname \*jpg | while read i
+do
+b='basename $i .jpg"
+echo $i :: $b
+
+find . -name \*jpg | while read i
+do
+b='basename $i'
+d=dirname $i"
+convert -resize 100x100 $i $d/thumb-$b
+    - rename jpg as thumb(name).jpg and resizes image

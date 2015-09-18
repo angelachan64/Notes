@@ -1,0 +1,50 @@
+Aim: C what I did there?
+Do Now:
+   From yesterday:
+   	4) Figure out what gcc does
+	5) Copy woohoo.c from your home directory to a /code/ directory on homer
+	   Assume you are not working on homer yourself
+   Today:
+	List the java primitive variable types
+________________________________________________________________________________
+
+4) man gcc
+   man = manual, for any command
+5) scp woohoo.c homer.stuy.edu:/code/
+   scp (secure copy) from local to remote machine & vice versa
+   slower than ftp (file transfer process) but secure
+   can also say scp woohoo.c dw@homer.stuy.edu:/code/
+       - You can omit the directory but not the colon and it will go to the home
+       	 directory
+________________________________________________________________________________
+
+command line prompt: dw@homer:~$
+   - dw is user
+   - homer is server
+   - ~ is home directory
+
+Last Class Today:
+      Everyday, one student will be chosen to provide a recap of the previous
+   day's class. That evening, the same person will be responsible for posting
+   the notes to the class piazza page. Make sure to tag the note as "last class
+   today."
+      Title the note: LCT <MM/DD WEEKDAY>
+      	    	      i.e. LCT 9/10 Thursday
+   Also include at the end of the note a link to interesting news about
+   technology
+
+Primitive java types:
+   int	       integers
+   boolean     true/false
+   char	       character
+   byte	       8 bit integer
+   short       16 bit integer
+   long	       64 biti nteger
+   float       32 bit floating point number
+   double      64 bit floating point number
+In C...
+   byte nonexistent
+   char is an integer type
+   boolean is nonexistent
+
+Check out The C Programming language (book) !!
