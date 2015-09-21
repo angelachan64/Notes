@@ -1,0 +1,45 @@
+Aim: Always read the fine print
+Do Now: Open up your editor of choice (emacs), write a basic "Hello World"
+   	program in java
+________________________________________________________________________________
+
+Data Types and Variables
+   Character literals are single characters inside ''
+      ex : 'a', '*', ...
+   String literals exist, even though there is no String data type
+      ex : "hello", "you smell"
+   C deals with String data type as an array of characters, followed by the null      character
+   Any variable type can be declared as an "unsigned" variable. This singifies
+      that the variable will never be ngative.
+      - The lower bound of any unsigned variable is 0
+      - The upper bound will be greater than the signed version
+           * i.e. in Java, 255 is a short
+	     	  in C, 255 can be an unsigned char
+      - To make an unsigned char:
+      	unsigned char x; --> 0<=x<=255
+   Variables cannot be declared inside for loop statements by they can be
+      initialized
+      - i.e. in Java: for (int i=0;i<10;i++)
+      	     in C   : for (i=0;i<10;i++)
+________________________________________________________________________________
+
+in Java:
+public clas hello{
+    public static void main (String[] args){
+        System.out.println("hello");
+    }
+}
+
+in C:
+int main(){
+    return 0;
+}
+int - standard return type
+main() - no parameters
+return 0; - standard return value
+no public, no private
+
+gcc hello.c --> a.out
+gcc hello.c -o greeter --> greeter
+   - cannot run greeter
+   - must say ./greeter to run it
