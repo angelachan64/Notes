@@ -1,0 +1,43 @@
+Aim: Variables are the spice of life
+Do now: What is the smallest variable type that could be used to store the
+   	following values (using standard sizes)?
+	1) 5 -------------------- byte
+	2) -30,000 -------------- short
+	3) 255 ------------------ short
+	4) 5,000,000,000 -------- long
+
+byte  : 8  bits (-2^7  --> 2^7 - 1)
+short : 16 bits (-2^15 --> 2^15 - 1)
+long  : 64 bits (-2^63 --> 2^63 - 1)
+________________________________________________________________________________
+
+C Primitive Variable Types
+   All C primitives are numberic
+      - this means there are no chars or booleans
+   The only difference is floating point vs integer and size of variable
+   Size can be platform dependent
+      - size of (<TYPE>) can be used to find the size in bytes
+      	   * sizeof(int)
+               Type  |    Standard Size (in bytes)
+	     ________|________________________________
+	             |
+	       int   |		     4
+                     |
+ 	      short  |		     2
+	             |
+               long  |		     8
+       	             |
+              float  |		     4
+                     |
+              double |		     8
+                     |
+               char  |		     1
+	       	     |
+   All boolean values are numbers
+      - 0 --> false
+      	anything else --> true
+      - YOU WILL ALL MAKE THIS MISTAKE:
+      	if (x=6){...}
+	   * x will become 6 and 6 is always true
+	if (x=0){...}
+	   * x will become 0 and 0 is always false
