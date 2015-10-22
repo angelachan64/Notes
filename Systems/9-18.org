@@ -19,7 +19,14 @@ if int bob=7 and you want to say bob=7
 - in Java: System.out.println("bob= " + bob)
 - in C   : printf("bob= %d\n", bob);
 If you want to print variables, you must include formatting placeholders in the string argument
-| Type | Formatting Character |
-|------|----------------------|
-| int  |          %d          |
-| long |        %ld           |
+| Type       | Formatting Character              |
+|------------+-----------------------------------|
+| int        | %d                                |
+| long       | %ld                               |
+| float      | %f                                |
+| double     | %lf                               |
+|            | %O.<x>f will provide              |
+|            | x digits after the floating point |
+| char       | %c                                |
+| char array | %s                                |
+| pointer    | %p                                |
