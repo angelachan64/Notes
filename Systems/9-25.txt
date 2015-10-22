@@ -1,0 +1,16 @@
+SOTD: Here Comes the HotStepper - Ini Kamoze
+Aim: Ok, now we're really going to get to the point
+
+The order of memory allocation is NOT sequential
+A variable is a shorthand of an address
+pointers - the fun really starts
+- variables designed to store a memory address
+printf("bob=%d\n",bob);
+a[0]=10;
+printf("a[0]=%d\n",a[-1]);
+printf("a[-2]=%d\n",a[-2]);
+a[-1] = 246
+printf("fred=%d\n", fred);
+printf("address of fred: %f",&fred);
+& is used to get the address of a variable
+* is used to declare a variable as a pointer type
