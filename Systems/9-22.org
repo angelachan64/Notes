@@ -1,0 +1,20 @@
+SOTD: Hunger Strike - Temple of the Dog
+
+Aim : What's the point of it all
+
+You must compile & run from school computers
+
+Memory Management
+- Memory allocation either happens at compile time or at run time (dynamic)
+  - compile time - stack memory
+  - run time - heap memory (Java new)
+- Compiler Allocated Memory
+  - packaged with the binary of the program
+  - There is no standard default value
+  - Variables and arrays are allocated here
+    - ex: float a
+- Arrays
+  - are not dynamic
+  - must have a fixed state
+  - there is no length function
+  - there is no boundary checking
