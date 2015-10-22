@@ -1,0 +1,15 @@
+from random import randrange:
+  import random.randrange
+  # You can then do randrange(x,y) instead of random.randrange(x,y)
+
+from flask import Flask, render_template
+app=Flask(__name__)
+@app.route("/home")
+^ decorator, modify method
+def kurfuffle():
+  return "<WEBPAGE>"
+  
+if __name__="__main__":
+  app.debug = True
+  app.run(host='0.0.0.0', port=8000)
+          ^global; local:127.0.0.1
