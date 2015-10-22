@@ -1,0 +1,28 @@
+JINJA 2 TEMPLATE
+
+<!DOCTYPE HTML>
+<h1>Lucky Number</h1>
+<h2>Your Lucky Number is </h2>
+
+in your py file:
+return render_template("lucky.html", number=n)
+
+Dictionaries in Pyton
+d={}
+d[10] = "hello"
+d["one"] = 12345
+d["two"] = "SOMETHING"
+d2 = {'one': 1
+      'two': 'hello'
+      3 : 'something'}
+d.has_key()
+d.keys()
+
+return render_template("person.html", d=dict)
+Last: {{d['last']}}
+First:{{d['first']}}
+Title:{{d.title}}
+{{d}} - display entire dictionary
+
+@app.route("/profile/<lastname>")
+defprofile (lastname:"")
