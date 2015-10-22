@@ -6,3 +6,5 @@ connection = MongoClient();
 
 # we could also have done: db = connection.pd7
 db = connection['pd7']
+
+print db.collection_names()
