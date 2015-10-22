@@ -12,6 +12,7 @@ int main(){
   printf("Hi Everybody!");
   return 0;
 }
+
 Only two error messages
 - more commonly: segmentation fault
 Before running the c file, you must declare printf
