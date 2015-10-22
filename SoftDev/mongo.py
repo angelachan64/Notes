@@ -18,8 +18,17 @@ print db.collection_names()
 names = ['thluffy', 'bucky', 'sue', 'arnold', 'alice']
 dtypes = ['plain','jelly', 'glazed', 'frosted']
 
+# for i in range(10):
+#     d = {'name' : random.choice(names),
+#          'donut' : random.choice(dtypes),
+#          'age' : random.randrange(15,30)}
+#    db.people.insert(d)
+
+l=[]
 for i in range(10):
     d = {'name' : random.choice(names),
          'donut' : random.choice(dtypes),
          'age' : random.randrange(15,30)}
-    db.people.insert(d)
+    l.append(d)
+
+dbpeople.insert(l)
