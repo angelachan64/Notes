@@ -15,5 +15,8 @@ Aim : Where do compsci priests live? - In directory!
   - the directory is not the physical location of the file
 -----
 * Directories
-- A *nix directory is a file containing the names of the files within the directory along with basic informations like file type.
+- A *nix directory is a file containing the names of the files within the directory along with basic information like file type.
 - Moving files into/out of a directory means changing the directory file, not actually moving any data.
+-----
+- You can't actually read directories in a program
+-----
