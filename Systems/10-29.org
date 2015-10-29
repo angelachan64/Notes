@@ -29,3 +29,7 @@ Aim : Where do compsci priests live? - In directory!
 ** closedir - <dirent.h>
 - Closes the directory stream and frees the pointer associated with it.
 - closedir( <DIRECTORY STREAM> )
+** readdir - <dirent.h>
+- readdir( <DIRECTORY STREAM> )
+- Returns a pointer to the next entry in a directory stream, or NULL if all entries have already been returned.
+- struct dirent - <sys/types.h>
