@@ -1,6 +1,6 @@
 SOTD: In the Waiting Line - Zero 7
 
-Aim : Where do conpsci priests live? - In directory!
+Aim : Where do compsci priests live? - In directory!
 
 - ctime( <TIME> )
   - TIME is type time_t *
