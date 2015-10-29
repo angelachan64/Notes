@@ -14,3 +14,6 @@ Aim : Where do compsci priests live? - In directory!
 - Moving files is just deleting a line from a directory and adding one to another
   - the directory is not the physical location of the file
 -----
+* Directories
+- A *nix directory is a file containing the names of the files within the directory along with basic informations like file type.
+- Moving files into/out of a directory means changing the directory file, not actually moving any data.
