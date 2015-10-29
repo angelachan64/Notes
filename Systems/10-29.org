@@ -11,4 +11,6 @@ Aim : Where do compsci priests live? - In directory!
 -----
 - A directory is just a file with specific properties
   - properties such as being executable (programs have this property)
+- Moving files is just deleting a line from a directory and adding one to another
+  - the directory is not the physical location of the file
 -----
