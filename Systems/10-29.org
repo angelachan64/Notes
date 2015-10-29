@@ -26,3 +26,6 @@ Aim : Where do compsci priests live? - In directory!
 - This will not change the cwd, it only allows your program to read the contents of the directory file
 - opendir( <PATH> );
 - Returns a pointer to a directory stream (DIR *)
+** closedir - <dirent.h>
+- Closes the directory stream and frees the pointer associated with it.
+- closedir( <DIRECTORY STREAM> )
