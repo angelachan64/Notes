@@ -19,4 +19,10 @@ Aim : Where do compsci priests live? - In directory!
 - Moving files into/out of a directory means changing the directory file, not actually moving any data.
 -----
 - You can't actually read directories in a program
+  - This could prevent corruption
 -----
+** opendir - <dirent.h>
+- Open a directory file
+- This will not change the cwd, it only allows your program to read the contents of the directory file
+- opendir( <PATH> );
+- Returns a pointer to a directory stream (DIR *)
