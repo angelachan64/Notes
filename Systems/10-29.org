@@ -8,3 +8,7 @@ Aim : Where do compsci priests live? - In directory!
 - time( <TIME> )
   - TIME is type time_t *
   - sets the parameter to the current time
+-----
+- A directory is just a file with specific properties
+  - properties such as being executable (programs have this property)
+-----
