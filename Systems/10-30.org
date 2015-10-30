@@ -1,3 +1,20 @@
 SOTD: War Pigs - Black Sabbath
 
 Aim : Puttin' in the puts.
+
+* Command Line Arguments
+- int main( int argc, char * argv[] )
+- program name is considered the first command line argument
+- argc
+  - number of command line arguments
+- argv
+  - array of command line arguments
+** scanf - <stdio.h>
+- scanf( <FORMAT STRING>, <VAR 1>, <VAR 2>, ... )
+- Reads in data from stdin using the format string to determine types
+- Puts the datas in each variable
+-----
+/Always put new lines!/
+
+If you don't have a new line at the end of your printf, the program will continue to the next few lines to see if anything needs to be added. With the new line, it will flush the buffer.
+-----
