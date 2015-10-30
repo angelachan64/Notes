@@ -18,3 +18,8 @@ Aim : Puttin' in the puts.
 
 If you don't have a new line at the end of your printf, the program will continue to the next few lines to see if anything needs to be added. With the new line, it will flush the buffer.
 -----
+- Variables must be pointers
+- int x; float f; double d;
+- scanf("%d %f %lf", &x, &f, &d);
+** fgets - <stdio.h>
+- Read in from a file stream and store it in a string
