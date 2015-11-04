@@ -1,0 +1,24 @@
+SOTD: Shine - The Collective Soul
+
+Aim : Are your processes running? - Then you should go out and catch them!
+
+Do Now: Run the command ps in a terminal. What do you see?
+- You are looking at the current pl list arocesses that are run by you and attached to the current terminal session
+- The TTY column is the terminal session
+- If you use -ax, it willl processes run ny anyone and will display processes not attached by a terminal session.
+- The processes are not all running simultaneously but instead they seem to be because computers are really fast.
+-----
+* Processes
+- Every running program is a process. A process can create subprocesses, but these are no different from regular processes.
+- A processor can handle 1 process per cycle (per core). "Multitasking" appears to happen because the processor switches between all the active processes quickly.
+- PID process can create subprocesses, but these are no different from regular processes.
+  - Every process has a unique identifier called the PID
+  - PID 1 is the init process
+  - Each entry in the /proc directory is a current PID
+- getpid() - <unistd.h>
+  - returns the current process' PID
+- getppid() - <unistd.h>
+  - returns the current process' parent PID
+- fork() - <unistd.h>
+  - Creates a separate process based on the current one, the new process is called the child, the original is the parent.
+  - The child process is a duplicate of the parent process. All parts of the parent process are copied, including stack and heap memory, and the file table.
