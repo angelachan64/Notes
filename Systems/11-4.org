@@ -22,3 +22,4 @@ Do Now: Run the command ps in a terminal. What do you see?
 - fork() - <unistd.h>
   - Creates a separate process based on the current one, the new process is called the child, the original is the parent.
   - The child process is a duplicate of the parent process. All parts of the parent process are copied, including stack and heap memory, and the file table.
+    - A quick note on threads: A thread is a separate executable entity similar to a child process, except a thread is not a standalone process. It does not have its own memory space, but instead it shares its parent's memory.
