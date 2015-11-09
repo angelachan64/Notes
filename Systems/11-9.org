@@ -1,3 +1,7 @@
 SOTD: Losing My Religion - REM
 
 Aim : Time to bring out the executioner.
+
+- exit(int x)
+  - returns x and ends process
+  - can be used anywhere
