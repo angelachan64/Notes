@@ -5,3 +5,6 @@ Aim : Time to bring out the executioner.
 - exit(int x)
   - returns x and ends process
   - can be used anywhere
+- waitpid(int pid, &status)
+  - waits until the child with the PID pid ends
+  - otherwise works same as wait()
