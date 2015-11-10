@@ -1,0 +1,28 @@
+SOTD: Burden in my Hand - Soundgarden
+
+Aim : Invasion of the process snatchers
+-----
+* The exec family - <unistd.h>
+- There are a number of c functions that can be used to run other programs from within our own programs.
+- Replaces the current process with the new program, any code after a call to an exec function will be ignored.
+** execl
+- execl(<PATH>, <COMMAND>, <ARGS>, NULL)
+  - PATH
+    - The path to the program (ex: "/bin/ls")
+  - COMMAND
+    - The name of the program (ex: "ls")
+  - ARGS
+    - Each command line argument you wish to give the program (ex: "-a", "-l")
+    - The last argument must be NULL
+  - ex: execl("/bin/ls", "ls", "-a", "-l", NULL);
+  
+** execlp
+- execlp(<PATH>, <COMMAND>, <ARGS>, NULL)
+  - Works like execl, except it uses the PATH environment variable for commands, so you can use "ls" as the PATH instead of "/bin/ls"
+  - ex: execlp("ls", "ls", "-a", "-m", NULL)
+** execvp
+- execvp(<PATH>, <ARGUMENT ARRAY>)
+- ARGUMENT ARRAY
+  - Array of strings, with element 0 must be the name of the program to be executed and the last element must be NULL
+. Like execlp, the PATH argument will take into PATH environment variable into account.
+  
