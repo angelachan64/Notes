@@ -6,5 +6,10 @@ Aim : Time to bring out the executioner.
   - returns x and ends process
   - can be used anywhere
 - waitpid(int pid, &status)
-  - waits until the child with the PID pid ends
-  - otherwise works same as wait()
+  - Waits for a specific child
+  - waitpid(pid, status, options)
+    - pid
+      - The PID of the specific child to look for
+      - If -1, will wait for any child
+    - options
+      - Can set other behavior for wait, if 0, will work normally
