@@ -1,3 +1,48 @@
 SOTD: Sell Out - Reel Big Fish
 
 Aim : Let's take this to delimit!
+
+* Parsing Strings
+** strsep - <string.h>
+- Used for parsing a string with a common delimeter
+-----
+*** How does it work?
+- char line[50] = "wow-this-is-cool";
+  - This will create something like:
+    | w | o | w | - | t | h | i | s | - | i | s | - | c | o | o | l | 0 |
+- Using strsep will make the delimeter a terminating null
+  - Using strsep on line will create something like this:
+    | w | o | w | 0 | t | h | i | s | - | i | s | - | c | o | o | l | 0 |
+  - You would need to run strsep on line two more times
+- char * tokens[5];
+  - You can use this array to point to the beginning of each word
+    - line:
+      | w | o | w | 0 | t | h | i | s | 0 | i | s | 0 | c | o | o | l | 0 |
+    - tokens:
+      | <ADDRESS OF w> | <ADDRESS OF t> | <ADDRESS OF i> | <ADDRESS OF c> | 0 |
+-----
+- strsep( <SOURCE> , <DELIMETER> )
+- Locates the first occurance of the delimeter in a string and replaces that character with NULL.
+- Returns the beginnig of the original string and sets the source string to the string starting at 1 index past the location of the new NULL.
+-----
+*** What does this mean?
+- Before we call strsep, line looks like this:
+  | w | o | w | - | t | h | i | s | - | i | s | - | c | o | o | l | 0 |
+- s1 points to the w in line so s1 also looks like this:
+  | w | o | w | - | t | h | i | s | - | i | s | - | c | o | o | l | 0 |
+- We call strsep on line with a hyphen:
+  - s2 = strsep( &s1, '-' );
+- s1 will now look like this:
+  | t | h | i | s | - | i | s | - | c | o | o | l | 0 |
+- s2 will now look like this:
+  | w | o | w | 0 |
+- You can put the pointer of s1 or s2 into tokens until tokens has all the pointers to the beginning of each word in the string
+  - This would mean when the string is fully parsed, tokens would look like this:
+    | <ADDRESS OF w> | <ADDRESS OF t> | <ADDRESS OF i> | <ADDRESS OF c> | 0 |
+- Because line is immutable, (the pointer will always point to the address of the first w in line), we need the new pointer to be moved while we continue to move over to the next token
+- When you run out of tokens, s1 will then become NULL but it won't return an error. This can be useful for finding out when you finish parsing the string. You can keep doing this but it still won't return an error. Instead, it will keep making s1 and s2 NULL.
+-----
+- Since the source variable's value is change,d it must be a pointer to a string.
+- char line[100] = "wow-this-is-cool";
+- char *s1 = line;
+- strsep( &s1, '-' );
