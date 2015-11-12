@@ -1,0 +1,15 @@
+* What do we look for (and what should we consider) in a new project?
+1. Look at the README.md
+  + It is all capital because back when files were sorted by their askii values, file names with capital letters were put on the top.
+2. Changes
+3. Todo
+  + With GitHub, we can now use the Issues section in the projects.
+4. Directory structure + File names
+  + Follow the standard convention!
+5. How is the file structured?
+  + Make sure it makes sense and make sure it stays consistent!
+  
+** In your own projects...
+- Make sure you delete functions that aren't used!
+- Make sure your function names are appropriate (ex: is_valid_user() instead of validate_user())
+- Try to put some comment blocks to make your code more understandable
