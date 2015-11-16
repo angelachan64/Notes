@@ -1,0 +1,113 @@
+SOTD: Gimmie Shelter - The Rolling Stones
+
+Aim : Redirection, how does it ... SQUIRREL
+
+* File Redirection
+- Changing the usual input/output behavior of a program
+- Command line redirection
+  - >
+    - redirects stdout to a file
+-----
+*** How does this work?
+- <COMMAND> > <FILE> (in terminal)
+  - i.e. ls > temp
+    - This would not print anything
+    - Instead it takes what would normally be printed out into temp (or any file)
+    - If the file has anything in it, this will overwrite the contents of the file
+    - It also creates the file if it does not currently exist
+-----
+    - Overwrites the contents of the file
+    - <COMMAND> > <FILE>
+-----
+*** Fun things!
+- When you don't give the command "cat" an argument, it will read from stdin
+  - This means that your bash will parrot you
+  - It's like having your very own three year old!
+- You can stop this by using ctrl+d
+- This by itself is not very useful, but you can use this to create a very simple file editor
+  - cat > <FILE> will put anything you type into stdin into the file
+    - High stakes C programming!
+- wc runs word count. It will print out the lines, words, and characters in a file.
+-----
+  - >>
+    - redirects stdout to a file
+    - Appends instead of overwrites
+  - 2>
+    - redirects stderr to a file
+    - Overwrites the file (2>> appends)
+  - &>
+    - redirects stdout and stderr
+-----
+*** What can this be used for?
+- You can make log files by using this when you run a program
+  - i.e. When you run a python file, you can make log files that you can look at at any time
+-----
+  - <
+    - redirects stdin from a file
+-----
+*** How does this work?
+- <COMMAND> < <FILE>
+  - If the command (or program you are running) has print statements that don't end in new lines, it might not print out because it will not be able to get flushed. The printing out of the redirection takes over the process.
+-----
+  - | (pipe)
+    - redirects stdout from one command to stdin of the next
+-----
+*** How can this be used?
+- ls | wc
+  - SAMPLE OUTPUT: 11   11    95
+  - There are 11 lines so there are 11 files or folders
+-----
+* Redirection in C Programs
+- dup2 - <unistd.h>
+  - Redirects one file descriptor to another
+    - i.e. dup2( fd1, fd2 )
+      - Redirects fd2 to fd1
+      - i.e. If your file descriptor table looks like this:
+        | File Descriptor | File Name |
+        |-----------------|-----------|
+        | 0               | stdin     |
+        | 1               | stdout    |
+        | 2               | stderr    |
+        | 3               | george    |
+        dup2( 3, 1 ) will print george to stdout. However, you will lose stdout and it will open as george. This means that if you want to use stdout agian, you will need to open stdout again.
+    - You will lose any reference to the original fd2, that file is closed.
+- dup - <unistd.h>
+  - Duplicates an existing entry in the file table.
+  - Returns a new file descriptor for the duplicate entry.
+  - dup( fd )
+    - returns the new file descriptor
+      - i.e. If your file descriptor table looks like this:
+        | File Descriptor | File Name |
+        |-----------------|-----------|
+        | 0               | stdin     |
+        | 1               | stdout    |
+        | 2               | stderr    |
+        | 3               | george    |
+        x = dup(1)
+        Your file descriptor table would now look like this
+        | File Descriptor | File Name |
+        |-----------------|-----------|
+        | 0               | stdin     |
+        | 1               | stdout    |
+        | 2               | stderr    |
+        | 3               | george    |
+        | 4               | stdout    |
+        Then you can call dup2( 3, 1 )
+        Your file descriptor table would then look like this
+        | File Descriptor | File Name |
+        |-----------------|-----------|
+        | 0               | stdin     |
+        | 1               | george    |
+        | 2               | stderr    |
+        | 3               | george    |
+        | 4               | stdout    |
+        If you wanted to make file descriptor 1 point to stdout again:
+        dup2( 4, 1 )
+        Then your file descriptor table would look like this:
+        | File Descriptor | File Name |
+        |-----------------|-----------|
+        | 0               | stdin     |
+        | 1               | stdout    |
+        | 2               | stderr    |
+        | 3               | george    |
+        | 4               | stdout    |
