@@ -29,3 +29,12 @@ def find_phone(s):
 if __name__ == "__main__":
   import doctest
   doctest.testmod()
+
+-----
+
+import re
+s="""
+111-111-1111 and (222) 222-2222 and 1 (333) 333-3333
+"""
+in order for the latter two to pass you would need to get the parentheses
+The parantheses mean something else so you would need to do \( and \)
