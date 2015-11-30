@@ -1,0 +1,66 @@
+SOTD: Billie Jean - Michael Jackson
+
+Aim : Sending mixed signals
+
+* Signals
+- Limited way of sending information to a process
+-----
+- When using signals, there isn't a lot you can send
+  - This doesn't mean it isn't powerful
+  - You can only send a small integer (31 options) (smaller than a byte)
+    - You can view all 31 by running man kill in terminal
+-----
+*** kill
+- Command line utility to send a signal to a process
+- $ kill <PID>
+  - Sends signal 15 (SIGTERM) to PID
+  - This is similar to the interrupt signal (Ctrl - C)
+-----
+***** How can we use this?
+- If you run a program and you want to end it, you use kill PID
+  - The process will end and the bash will print out "Terminated: 15"
+-----
+  - $ kill -<SIGNAL> <PID>
+    - sends SIGNAL to PID
+-----
+***** What are some more signals?
+- 9 KILL - fully terminates the process
+- 11 SIGSEGV - Segmentation fault signal, sent by operating system when user tries to access a piece of memory he/she does not have access to
+- 17 stops program but will not kill the process
+  - This can be brought back with the command fg
+-----
+- killall [-<SIGNAL>] <PROCESS>
+  - The brackets mean optional
+  - Sends SIGTERM (or SIGNAL if provided) to all processes with PROCESS as the name
+
+* Signal handling in C programs <signal.h>
+*** kill
+- Send a signal to a process in a C program
+- kill(<PID>, <SIGNAL>)
+- Returns 0 on success or -1 (errno) on failure
+*** sighandler
+- To work with signals in a C program you must create a signal handling function
+- Some signals (like SIGKILL) cannot be caught
+-----
+***** An example signal handler, smart.c
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <signal.h>
+
+static void sighandler( int signo ){ //sighandler and signo can be different
+  if ( signo  == SIGINT ) //all signals are caught with this one function
+    printf("Interrupted... how rude!\n");
+}
+
+int main(){
+
+  signal( SIGINT, sighandler ); //attaches sighandler to the signal sent
+
+  int i = 0;
+  while(1){
+  printf("G'day mate!\t%d\t%d\n", i++, getpid());
+  sleep(1);
+  }
+  return 0;
+}
