@@ -41,8 +41,17 @@ Aim : Sending mixed signals
 *** sighandler
 - To work with signals in a C program you must create a signal handling function
 - Some signals (like SIGKILL) cannot be caught
+- static void sighandler( int signo )
+- Must be static, must be void, must take a single int parameter
+- static
+  - The function can only be called from within the file it is defined
+*** signal
+- After you create the function, you attach the signals to it using the signal function:
+  - signal( SIGNUMBER, sighandler )
 -----
 ***** An example signal handler, smart.c
+*** There is a real c file in this folder because the indentation here gets messed up
+
 #include <stdio.h>
 
 #include <stdlib.h>
