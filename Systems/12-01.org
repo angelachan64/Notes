@@ -1,0 +1,5 @@
+SOTD: Say it ain't so - Weezer
+
+Aim : You want the signal? You can't handle the signal!
+-----
+A static function lives in a different piece of memory. When a signal gets sent, it looks at the function in the static section of memory. You must also define static functions in the same file you are running it from. 
