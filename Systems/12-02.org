@@ -7,3 +7,51 @@ Aim : Sharing is caring!
 Do Now:
 - Write a simple c program that creates a child process and have the parent wait for the child to exit.
 - Create a primitive variable in the parent before forking, then modify that variable in the child and print it out in both the child and parent.
+
+* Shared Memory - <sys/shm.h>, <sys/ipc.h>, <sys/type.h>
+- A segment of heap memory that can be accessed by multiple processes that do not have to be related
+- Shared memory is accessed via some key that is known by any process that needs to access it
+- Shared memory does not get released when a program exits
+- 5 Shared memory operations
+  - Create the segment (happens once)
+  - Access the segment (happens once per program)
+    - Think: opening a file. When you open a file, you only get access to the file
+  - Attach the segment to a variable (once per process)
+    - This is two separate procedures
+    - Once this is done, the pointer works like any other pointer
+  - Detach the segment from a variable (once per process)
+  - Remove the segment (happens once)
+  
+*** shmget
+- Create or access a shared memory segment
+- Returns a shared memory descriptor (similar idea to a file descriptor), or -1 if it fails
+  - This is NOT the same as the key!
+  - This is handled by the operating system
+- shmget( key, size, flags )
+  - key
+    - Unique integer identifier for the shared memory segment
+  - size
+    - How much memory to request
+  - flags
+    - Includes permissions for the segment
+    - Combine with bitwise or:
+      - IPC_CREAT
+        - Create the segment
+        - If the segment is new, will set value to all 0s
+      - IPC_EXCL
+        - Fail if the segment already exists and IPC_CREAT is on
+      example
+        - int sd;
+        - sd = shmget( 24601, 1024, IPC_CREAT | 0644)
+*** shmat
+- Attach a shared memory segment to a variable
+- Returns a pointer to the segment, or -1 (errno)
+- shmat( descriptor, address, flags )
+  - descriptor
+    - The return value of shmget
+  - address
+    - If 0, the OS will provide the appropriate address
+  - flags
+    - Usually 0, there is one useful flag
+    - SHM_RDONLY
+      - makes the memory read only
