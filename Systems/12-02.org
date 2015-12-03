@@ -1,0 +1,9 @@
+NOTE: Registering for graphics
+
+SOTD: Imagine - John Lennon
+
+Aim : Sharing is caring!
+
+Do Now:
+- Write a simple c program that creates a child process and have the parent wait for the child to exit.
+- Create a primitive variable in the parent before forking, then modify that variable in the child and print it out in both the child and parent.
