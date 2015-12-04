@@ -1,0 +1,49 @@
+SOTD: Plush - Stone Temple Pilots
+
+Aim : Memes
+
+* Shared Memory
+*** ftok
+- Generate a key useful for IPC functions
+- ftok because file to key
+- ftok( path, x )
+  - path
+    - A path to some file, the file must be accessible by the program running
+  - x
+    - An int
+  - The generated key will be same if path and x are the same for separate calls
+- example:
+  - sd = shmget( ftok("dir/file", 12), 1024, IPC_CREAT | 0644 )
+-----
+You will likely need several different programs to work with shared memories (i.e. to make, use, and remove)
+- This means it's a good idea to use a makefile and to name your output files distinctly to avoid having to re-compile and re-run compiled programs because they're all a.out
+-----
+*** shmdt
+- Detach a variable from a shared memory segment
+  - Remember! This does NOT remove it! This only detaches it! This will still exist in shared memory, just not in your program!
+- Returns 0 upon success or -1 upon failure
+  - This may happen if you give it the wrong memory or shared memory that isn't attached
+- shmdt( pointer )
+  - pointer
+    - The address used to access the segment
+- example:
+  - shmdt( p );
+*** shmctl
+- Shared memory control
+  - You can remove the segment with this function but you can do a lot more with this as well
+- Perform operations on the shared memory segment
+- Each shared memory segment has metadata that can be stored in a struct (struct shmid_ds)
+  - shmid_ds is shared memory ID data structure (DW thinks?)
+- Some of that data stored: last access, size, PID of creator, PID of last modification
+- shmctl( descriptor, command, buffer )
+  - descriptor
+    - Return value of shmget
+  - command
+    - IPC_STAT
+      - populate the buffer (struct shmid_ds) with information
+    - IPC_SET
+      - set some of the information for the segment to the info in buffer
+    - IPC_RMID
+      - remove a shared memory segment
+  - buffer
+    - a pointer that shmctl will put data into
