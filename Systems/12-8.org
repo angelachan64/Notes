@@ -1,0 +1,67 @@
+SOTD: Time is Running OUt - Muse
+
+Aim : What's a semaphore? - To control resources!
+
+* Semaphore code
+*** semctl - <sys/types.h> <sys/ipc.h> <sys/sem.h>
+- Control the semaphore, including:
+  - Set the semaphore value
+  - Remove the semaphore
+  - Get the current value
+  - Get information about the semaphore
+- semctl(<DESCRIPTOR>, <INDEX>, <OPERATION>, <DATA>)
+  - DESCRIPTOR
+    - The return value of semget
+  - INDEX
+    - The index of the semaphore you want to control in the semaphore set identified by the descriptor
+  - OPERATION
+    - One of the following constants (*/there are others as well/*)
+      - IPC_RMID
+        - remove the semaphore
+      - SETVAL
+        - set the value of the semaphore
+        - requires DATA
+      - SETALL
+        - Set the value of every semaphore in the set
+        - requires DATA
+      - GETVAL
+        - return the value
+      - IPC_STAT
+        - Populate buffer with information about the semaphore
+        - requires DATA
+      -----
+      - Each constant that requires data will require different types of data
+        - i.e. SETVAL would need an int because it is setting the value of one semaphore
+        - i.e. SETALL would need an array of ints, one for each semaphore in the set
+        - i.e. IPC_STAT would need a struct to put the data into
+      -----
+  - DATA
+    - Variable for setting/storing information about the semaphore
+      - data type: union semun
+      -----
+      ***** What is a union?
+      - union north{ int i; char c; double d; };
+      - if I were to create a union variable, I would do:
+        - union north foo;
+      - to change the data in foo:
+        - foo.i = 12;
+      - IF union north were a struct, it would be 13 bytes
+        - 4 bytes for int
+        - 1 byte for char
+        - 8 bytes for double
+      - INSTEAD, the size of the union is 8 bytes
+      - This is because a union does NOT contain all three data elements. Instead, it only contains ONE of them. This means that it doesn't need to be big enough to hold ALL of them, just ONE of them
+      - If you were to try to change a value in foo, it would overwrite things in the union
+        - i.e. foo.d = 189.54
+          - This would overwrite foo.i = 12 and foo would now hold the double 189.54
+        - i.e. foo.c = 'x'
+          - Now that foo is 189.54, the first (or last, depending on how your operationg system stores data) byte of the union would hold the numberical value for the letter x
+          - *IF YOU TRY TO PRINT OUT foo.d, YOU WILL GET THE NUMBERICAL VALUE OF X FOLLOWED BY THE REST OF THE DOUBLE (whatever is remaining)*
+      -----
+        - You have to declare this union in your main.c file on linux because there is NO header file that contains the struct for union semun. Mac computers will have one, though. The calling program must define this union as follows:
+          - union semun{ int val; struct semid_ds *buf; unsigned short *array; struct seminfo *_buf;};
+            - val
+              - used to set initial value
+            - buf
+              - buffer for IPC_STAT
+          
