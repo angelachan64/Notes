@@ -1,0 +1,36 @@
+SOTD: Bold As Love - Jimi Hendrix
+
+Aim : Turn down or up?
+
+*Semaphore code
+*** semop
+- Perform semaphore operations (like Up/Down)
+- All operations performed via semop are atomic!
+- semop( <DESCRIPTOR>, <OPERATION>, <AMOUNT> )
+  - DESCRIPTOR
+    - You know what this is...
+  - AMOUNT
+    - The amount of semaphores you want to operate on in the semaphore set
+    - For a single semaphore set, 1
+  - OPERATION
+    - A pointer to a struct sembuf value
+    - struct sembuf { short sem_op; short sem_num; short sem_flg; };
+      - sem_num
+        - The index of the semaphore you want to work on
+      - sem_op
+        - -1
+          - Down(S)
+        - +1
+          - Up(S)
+        - Any -/+ number will work, you will be requesting/releasing that value from the semaphore
+          - /If you can't request or release that many semaphores in one go, it won't work/
+            - i.e. if sem_op was -10 but you only had 4 available semaphores, the command wouldn't work right away. Instead, it would wait for the semaphores to return before working. This could, of course, lead to deadlock. For example, a writer may not be able to access a file if several readers are requesting and releasing semaphores to the file, the writer may not be able to access the file for a long time if he needs all semaphores present in order to access it.
+        - 0
+          - Block until the semaphore reaches 0
+      - sem_flg
+        - Provide further options
+        - SEM_UNDO
+          - Allow the OS to undo the given operation
+          - Useful in the event that a program exits before it could release a semaphore
+        - IPC_NOWAIT
+          - Instead of waiting for the semaphore to be available, return an error
