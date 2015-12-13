@@ -2,7 +2,7 @@ SOTD: Bold As Love - Jimi Hendrix
 
 Aim : Turn down or up?
 
-*Semaphore code
+* Semaphore code
 *** semop
 - Perform semaphore operations (like Up/Down)
 - All operations performed via semop are atomic!
