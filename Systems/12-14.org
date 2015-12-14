@@ -20,3 +20,33 @@ Aim : Ceci n'est pas une pipe (This is not a pipe)
 - pipe( int descriptors[2] )
   - descriptors
     - Array that will contain the file descriptors for each end of the pipe
+- example
+  - int des[2];
+  - pipe( des );
+  - char line[100];
+  - f = fork();
+  - if (f == 0) {
+    - close( des[0] );
+    - write( des[1], "hello!", 7);
+  - } else{
+    - close( des[1] );
+    - read( des[0], line, sizeof(line) );
+  - }
+  - CHECK PIPER.C FOR A BETTER EXAMPLE
+
+*** Named Pipes
+- Also known as FIFOs
+  - First in First out
+- Same as unnamed pipes except FIFOs have a name that can be used to identify them via different programs
+- Keep in mind that like unnamed pipes, FIFOs are unidirectional
+***** mkfifo
+- Shell command to make a FIFO
+- $ mkfifo <pipe name>
+  - When you use mkfifo, it will appear in ls as a file would but it would have p in front of its permissions because it is a pipe
+    - This means you can cat this pipe
+  - i.e. mkfifo mario
+    - When you write into mario in several terminals, you could write to the pipe perfectly fine
+    - When you READ from mario in several terminals, there's no guarantee which terminal would get whatever you're writing in a separate terminal.
+    - If you close all instances of writing into the pipe, it will also close the reading end of the pipe because it has reached the end of the file.
+    - You can also write to the pipe and the pipe would hold it until you read from the pipe
+    - You can also rm the pipe BUT if the pipe is still open, you could still use the connection from the pipe.
