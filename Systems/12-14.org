@@ -1,0 +1,22 @@
+SOTD: Shinbone Alley/Hard to Exist - Spin Doctors
+
+Aim : Ceci n'est pas une pipe (This is not a pipe)
+*Pipe
+- A conduit between 2 separate processes
+  | a | -- 11001010101101011010 --> | b |
+- Pipes have 2 ends: a read end and a write end
+- Pipes are unidirectional (a single pipe must be either read or write only in a process)
+  - In the diagram above, the pipe is a to b. If you want to make communication both ways, you must make two pipes.
+- Pipes act just like files
+- You can transfer any data you like through a pipe using read/write
+  - In the diagram above, a would write to the pipe, b would read from the pipe
+- Pipes are still interprocess communication but do /not/ fall under the category of posix or System 5 IPC
+- Unnamed pipes have no external identification (like a descriptor or name)
+  - This means that unnamed pipes cannot be used for communication between two separate programs
+*** pipe <unistd.h>
+- Create an unnamed pipe
+- Returns 0 if the pipe was created, -1 if not
+- Opens both ends of the pipe as files
+- pipe( int descriptors[2] )
+  - descriptors
+    - Array that will contain the file descriptors for each end of the pipe
