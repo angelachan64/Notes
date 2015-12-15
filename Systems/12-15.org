@@ -1,0 +1,17 @@
+SOTD: Tropicalia - Beck
+
+Aim : A pipe by any other name...
+
+* Named pipes (cont. from yesterday)
+- Pipes block until something is connecting to the other side of the pipe
+  - When you run the open call on the pipe, it will not work as opening a regular file
+- A quick way to connect would be to use a terminal to cat into mario
+  - However, if no one is on the other side of the pipe, the cat program will end when you try to send information through the pipe
+  - cat will not send a terminating null after its string so it may end up having some data after what you sent
+- If people know the name of your pipe, people could connect to it and mess with the way your pipe works (i.e. order in which info is sent, what is sent, etc)
+  - You can get around this by deleting the pipe after you connect because, just like unnamed pipes, named pipes will stay open after the connection is made
+*** mkfifo - <sys/types.h> <sys/stat.h>
+- c function to create a FIFO
+- returns 0 on success and -1 on failure
+- once created, the FIFO acts like a regular file, and we can use open, read, write, and close it
+- mkfifo( <name>, <permissions> )
