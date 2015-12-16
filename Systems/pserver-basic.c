@@ -21,6 +21,10 @@ int server_handshake( int *from_client ) {
   
   strncpy( buffer, "its-a-me, mario!", sizeof(buffer) );
   
+  write( to_client, buffer, sizeof(buffer) );
+  
+  return to_client;
+  
 }
 
 int main() {
