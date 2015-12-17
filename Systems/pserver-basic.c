@@ -12,16 +12,16 @@ int server_handshake( int *from_client ) {
   char buffer[100];
   
   mkfifo( "mario", 0644 ); // This is the well-known pipe
-  *from_client = open( "mario", O_RDONLY );
+  *from_client = open( "mario", O_RDONLY ); // open & wait for connection
   
-  remove( "mario" );
-  read( *from_client, buffer, sizeof(buffer) );
+  remove( "mario" ); // once connected, remove the pipe file
   
-  to_client = open( buffer, O_WRONLY );
+  read( *from_client, buffer, sizeof(buffer) ); // read from client
+  printf( "<server> connection established: [%s]\n", buffer );
+  to_client = open( buffer, O_WRONLY ); // connect downstream
   
   strncpy( buffer, "its-a-me, mario!", sizeof(buffer) );
-  
-  write( to_client, buffer, sizeof(buffer) );
+  write( to_client, buffer, sizeof(buffer) ); // send initial message
   
   return to_client;
   
@@ -37,8 +37,12 @@ int main() {
   
   while( 1 ) {
     read( from_client, buffer, sizeof(buffer) );
-    /* do stuff to buffer */
+    printf( "<server> received [%s]\n", buffer );
+    strncat( buffer, "purple monkey dishwasher", sizeof(buffer)-1 ); // THIS IS WHERE YOU WOULD PROCESS THE INPUT
     write( to_client, buffer, sizeof(buffer) );
   }
+  
+  close( to_client );
+  close( from_client );
 
 }
