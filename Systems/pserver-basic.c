@@ -36,13 +36,18 @@ int main() {
   to_client = server_handshake( &from_client );
   
   while( 1 ) {
-    read( from_client, buffer, sizeof(buffer) );
-    printf( "<server> received [%s]\n", buffer );
-    strncat( buffer, "purple monkey dishwasher", sizeof(buffer)-1 ); // THIS IS WHERE YOU WOULD PROCESS THE INPUT
-    write( to_client, buffer, sizeof(buffer) );
-  }
+    printf("<server> waiting for connection\n");
+    to_client = server_handshake( &from_client );
+    
+    while( read( from_client, buffer, sizeof(buffer) ) ){ // The end of file character would be when it reads 0 bytes
+      printf( "<server> received [%s]\n", buffer );
+      strncat( buffer, "purple monkey dishwasher", sizeof(buffer)-1 ); // THIS IS WHERE YOU WOULD PROCESS THE INPUT
+      write( to_client, buffer, sizeof(buffer) );
+
+      strncpy( buffer, "", sizeof(buffer) );
+    } 
   
   close( to_client );
-  close( from_client );
 
+  }
 }
