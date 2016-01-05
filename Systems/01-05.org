@@ -1,0 +1,35 @@
+SOTD: Virtual Insanity - Jamiroquai
+
+Aim : Cisco in an hour Part II: Electric Boogaloo
+
+* Physical Layer
+- A brief history of wired connections
+  - Thinnet
+    - A single Coaxial cable runs throughout the network
+    - T-Junctions used to splice connections
+  - In Thicknet and Thinnet, all data is sent to all computers
+  - Each computer added increases the power drain on the entire system, degrading service
+  - Token Ring
+    - Each computer is connected in a ring to each other
+      - i.e. If there are four computers...
+        - Computer A is connected to Computer B
+        - Computer B is connected to Computer C
+        - Computer C is connected to Computer D
+        - Computer D is connected to Computer A
+      - Because each computer has its own power source, the signal won't degrade
+      - Easy to add a new computer to the system (just change two plugs)
+      - BUT when too many people are using the signal, it becomes too slow
+      - IF, say, Computer A and Computer C sends a signal at the same time, there's a potential for a collision between two signals, causing them to become jumbled
+        - This is combatted by allowing only one token to control the whole network
+    - Only one computer has command of the network resources at a time. This is called "having the token"
+    - The network sends a "token" throughout the ring, which contains the identity of the computer with the token. All other computers must wait to use the network. This means two computers CANNOT send a signal at the same time.
+    - No possibility of collisions
+  - Ethernet
+    - Multiple computers connect to a single hub or switch
+    - Hub
+      - Broadcasts the data to all the computers
+      - Earliest type of ethernet equipment
+    - Switch
+      - Sends data to a specific computer
+      - Needs to look at Data Link Layer
+    - The more computers you add to an ethernet network, the greater the chance of collisions
