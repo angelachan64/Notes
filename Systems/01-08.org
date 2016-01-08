@@ -1,0 +1,9 @@
+SOTD: Mr. Jones - Counting Crows
+
+Aim : Cisco in an hour V for Vendetta
+
+* Network Layer (3)
+- IP (internet protocol) addresses
+  - IPv4: 4 byte address
+    - [0-255] . [0-255] . [0-255] . [0-255]
+  - Routing is made easier by having IP addresses distributed in blocks
