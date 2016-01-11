@@ -1,0 +1,34 @@
+SOTD: Space Oddity - David Bowie
+
+Aim : Cisco in an hour VI: The Undiscovered Country
+
+* Network Layer (3)
+- Data is broken into packets
+  | DESCRIPTION | <header info> | <packet length> | <fragment info> | <time-to-live> | <protocol> | <header checksum> | <source> | <destination> | <...> | <data>     |
+  | SIZE        | 2B            | 2B              | 4B              | 1B             | 1B         | 2B                | 4B       | 4B            | 4B    | 20-65,535B |
+  - header info
+    - packet type (IPv4/6), header length, etc...
+  - fragment info
+    - full payloads may be broken up, this will have total # of fragments as well as which fragment the current packet contains
+  - time-to-live
+    - maximum # of hops before the packet dies
+  - protocol
+    - TC, UDP, etc...
+  - ...
+    - optional information depending on type of packet
+  - IP MTU is 65,535B
+- IPv6
+  - now 20 years old!
+  - designed to overcome the limitations of IPv4
+  - addresses
+    - address space goes from 2^32 to 2^128
+    - addresses are written as 8 groups of 4 hexadecimal digits
+      - i.e. 87ab : 301c : b251 : ...
+    - All existing IPv4 addresses can be written as IPv6 like this:
+      - i.e. 0000 : 0000 : 0000 : ffff : 149.89.150.100
+  - MTU
+    - ~4.3 billion (2^32)
+      - Also referred to as jumbograms
+
+* Transport Layer (4)
+- Computer to computer connection over multiple networks
