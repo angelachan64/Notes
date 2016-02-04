@@ -1,0 +1,9 @@
+* Netpbm.ppm
+- file header:
+  - P# (Tells you what type of file it is. i.e. P1, P2, P3, P4, P5, P6. We are using P3)
+  - XRES YRES (in pixels) (the size of the image)
+  - MAX_COLOR_VALUE
+- R G B values (spaces in between) for each pixel
+  - all whitespace is equivalent
+- IF YOU ARE USING EMACS, C-c C-c TO SWITCH BACK AND FORTH BETWEEN RENDERED IMAGE AND PLAIN TEXT
+- DO NOT ADD IMAGE FILES TO THE GITHUB REPOSITORY
