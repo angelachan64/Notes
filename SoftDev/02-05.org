@@ -1,0 +1,50 @@
+Aim: HTML5? DOM? Canvas?
+
+Do Now: Imagine it's 1995
+        1) What were you wearing?
+        2) What were you listening to?
+        3) What is the state of the interwebs?
+        4) What does your webpage look like?
+
+1) lmao idk
+2) Greenday?
+3) Geocities,
+   People thought the internet was a fad,
+   Internet needed to be connected through a phone line
+4) Just text and images
+
+http://www.angelfire.com/super/badwebs/
+*** What's bad about this website?
+1) The moving background is pretty distracting
+2) The color contrast is super bad
+3) The pointers are kind of weird to look at
+
+*** Browsers
+- AOL
+- NetScape
+- Internet Explorer
+  - Combine the last two to get firefox
+  
+*** DOM (Document Object Model)
+- W3C (World Wide Web Consortion)
+- example:
+  : <html>
+  :  <head>
+  :    <title>
+  :    Arrrr
+  :    </title>
+  :  </head>
+  :  <body>
+  :    <h1> Bar </h1>
+  :    <p> Angela </p>
+  :  </body>
+  : </html>
+  :                     DOCUMENT
+  :                        |
+  :                       HTML
+  :                       /  \
+  :                   HEAD    BODY
+  :                  /       /    \
+  :             TITLE      H1      P
+  :               /        /        \
+  :        "Arrrr"    "Bar"          "Angela"
