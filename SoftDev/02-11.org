@@ -1,0 +1,35 @@
+Aim: LISTEN UP, CONNECT zee DOTS
+
+DN : Procure your HW
+
+***** Paths are used to draw arbitary shapes, including circles and curves
+- A context can keep track of one path at a time.
+- The path is not drawn until stroke() is called
+- A path is considered done when a new beginPath() is called
+*** Functions
+- beginPath()
+  - starts or resets current path
+- moveTo(x, y)
+  - Moves path to position (x, y)
+  - Does not result in a line or a filled in section
+- lineTo(x, y)
+  - Moves path to position (x, y)
+  - Will result in a line and a filled in section
+- closePath()
+  - Results in a line from current position to start pos
+  - Path can be continued after
+- stroke()
+  - Renders all the lines in the path, does not end the path
+- fill()
+  - Fills the interior of the path
+  - Will not work if the path has fewer than 3 points
+
+*** TASK
+- Connectedy.js
+  - Draws a connected series of dots by adding 1 dot per user click (at click location)
+  - Clear board
+- You will need
+  - addEventListener("click", function)
+- CALL CANVAS ID "playground"
+- CALL BUTTON ID "clear"
+- CALL JS FILE dotconn.js
